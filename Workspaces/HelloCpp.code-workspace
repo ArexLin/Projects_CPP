@@ -2,6 +2,9 @@
 	"folders": [
 		{
 			"path": "..\\HelloWorld"
+		},
+		{
+			"path": "..\\LeetCode"
 		}
 	],
 	"settings": {}
