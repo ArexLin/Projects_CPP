@@ -2,6 +2,7 @@
 #include <vector>
 #include <string>
 #include <thread>
+#include <map>
 
 using namespace std;
 
@@ -9,48 +10,40 @@ class Solution {
 public:
     vector<int> twoSum(vector<int>& nums, int target) {
         std::vector<int> answer;
-        int Left = 0, Right = nums.size()-1;
-        cout << "Left = " << Left << ", Right = " << Right << endl;
+        map <int, int> aHashMap;        // store (nums[i], i)
+        map <int, int>::iterator it;
 
-        int sum = 0;
+        int size = nums.size();
 
-        do
+        for (int i = 0; i<size; i++)
         {
-            sum = nums[Left] + nums[Right];
-            cout << "Left = " << Left << ", Right = " << Right << endl;
-            cout << "value = " << nums[Left] << ", " << nums[Right] << endl;
-            cout << "sum = " << sum << endl;
-
-            if (sum < target)
+            it = aHashMap.find(target - nums[i]);
+            if (it != aHashMap.end())
             {
-                Left++;
-            }
-            else if (sum > target)
-            {
-                Right--;
-            }
-            else    //(sum == target)
-            {
-                cout << "Found!!" << endl;
-
-                answer.push_back(Left);
-                answer.push_back(Right);
+                answer.push_back(it->second);
+                answer.push_back(i);
+                //cout << "Found!!" << endl;
+                //cout << "value = " << it->second << ", " << i << endl;
                 return answer;
             }
-        }while (Left < Right);
-        return answer;            
-    }
+            else
+            {
+                aHashMap.emplace(nums[i], i);
+                //cout << "nums[i], i = " << nums[i] << ", " << i << endl;
+            }
+        }
+        return answer;
+    }    
 };
 
 
 int main()
 {
-    //vector<int> numbers {2, 7, 11, 15};
-    //int target = 9;
+    vector<int> numbers {2, 7, 11, 15};
+    int target = 9;
 
-    vector<int> numbers {3, 2, 4};  // need to sort first
-
-    int target = 6;
+    //vector<int> numbers {3, 2, 4};  // need to sort first
+    //int target = 6;
 
     vector<int> aResult;
 
