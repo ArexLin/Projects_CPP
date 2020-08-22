@@ -55,7 +55,7 @@ int main()
     }
 
     TestClass anInstance;
-    int i = ;
+    int i = 0;
 
     switch (i)
     {
