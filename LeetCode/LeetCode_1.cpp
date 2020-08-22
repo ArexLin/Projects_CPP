@@ -39,8 +39,8 @@ public:
 
 int main()
 {
-    vector<int> numbers {2, 7, 11, 15};
-    int target = 9;
+    vector<int> numbers {2, 7, 11, 3, -3, 15};
+    int target = 12;
 
     //vector<int> numbers {3, 2, 4};  // need to sort first
     //int target = 6;
